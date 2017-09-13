@@ -1,0 +1,25 @@
+{
+  "name": "flashcard-generator",
+  "version": "1.0.0",
+  "description": "basic and cloze flashcard generator/ quiz",
+  "main": "Flashcards.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ATJohnson83/Flashcard-Generator.git"
+  },
+  "keywords": [
+    "flashcards"
+  ],
+  "author": "austin johnson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ATJohnson83/Flashcard-Generator/issues"
+  },
+  "homepage": "https://github.com/ATJohnson83/Flashcard-Generator#readme",
+  "dependencies": {
+    "inquirer": "^3.2.3"
+  }
+}

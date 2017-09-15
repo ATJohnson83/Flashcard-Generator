@@ -24,30 +24,56 @@ function createCloze(){
 	console.log('');
 	console.log(`Create ${clocnt} Cloze Flashcards`);
 	console.log('');
-inquirer.prompt([
+
+	var fullTextAnswer = "";
+
+	inquirer.prompt([
 	{
 		name:'full',
 		message:'Enter the full text: '
 	},
 	{
 		name:'cloze',
-		message:'What is the cloze word(s)?: '
+		message:'What is the cloze word(s)?: ',
+		when: function (answer) {
+			fullTextAnswer = answer.full;
+			return true;
+		}, 
+		validate: function(clozeAnswer) {
+
+			// console.log(clozeAnswer);
+			// console.log(fullTextAnswer);
+
+			// console.log(`Full is : ${this.full}`);
+			// console.log(`Name is : ${name}`);
+			// console.log(inquirer);
+			if(! fullTextAnswer.includes(clozeAnswer)){
+				return "The full text answer does not contain the given cloze answer. Try again!";
+			}
+			else
+			{
+				return true;
+			}
+		}
 	}
-	]).then(function(answer){
+	]).then(function(answer) {
+
 			var cloze = new Cloze(answer.full,answer.cloze);
 			clozeArr.push(cloze);
-			count ++
+			count++;
+
 			if(count<3){
-			createCloze();
-		}
-		else{
-			console.log('');
-			console.log('- - - - - - - - - - - - - - - - -');
-			console.log("You have created 3 Cloze Cards");
-			console.log('Time to quiz yourself');
-			console.log('- - - - - - - - - - - - - - - - -');
-			clozeQuiz();
-		}
+				createCloze();
+			}
+			else{
+				console.log('');
+				console.log('- - - - - - - - - - - - - - - - -');
+				console.log("You have created 3 Cloze Cards");
+				console.log('Time to quiz yourself');
+				console.log('- - - - - - - - - - - - - - - - -');
+				clozeQuiz();
+			}
+
 	})
 }
 
